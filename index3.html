@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .api-card {
+            border: solid 1px black;
+            width: 400px;
+            height: 150px;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataInfo);
+        const content = document.querySelector('.content');
+        data.forEach(element => {
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('api-card');
+            content.append(newDiv);
+            
+            const apiName = document.createElement('h3');
+            apiName.textContent = element.API;
+            newDiv.append(apiName);
+
+            const description = document.createElement('p');
+            description.textContent = element.Description;
+            newDiv.append(description);
+
+            const link = document.createElement('a');
+            link.textContent = element.Link;
+            newDiv.append(link);            
+        });
+    </script>
+</body>
+</html>
